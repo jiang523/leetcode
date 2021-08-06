@@ -51,11 +51,13 @@ class Solution12 {
             return false;
         }
         word = word.substring(1,word.length());
+        //确保递归时不会访问到当前元素
         board[i][j] = '/';
         boolean res =  help(i,j-1,word,board)
                 || help(i,j+1,word,board)
                 || help(i+1,j,word,board)
                 || help(i-1,j,word,board);
+        //将当前元素改回原来的值
         board[i][j] = value;
         return res;
     }
